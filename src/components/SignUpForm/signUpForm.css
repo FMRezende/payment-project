@@ -1,21 +1,40 @@
 .SignUp__container {
   align-items: center;
+<<<<<<< HEAD
   width: 100%;
   height: 100%;
+=======
+>>>>>>> 5c2a21e1815de1e1ad597b1d5d2284f13085236a
   display: flex;
 }
 
 .signUpForm {
   display: flex;
   flex-direction: column;
+<<<<<<< HEAD
+=======
+  width: 287px;
+}
+
+.form__container {
+  align-items: center;
+  text-align: center;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+>>>>>>> 5c2a21e1815de1e1ad597b1d5d2284f13085236a
 }
 
 .input__container {
   background: #ffffff;
   width: 283px;
   height: 56px;
+<<<<<<< HEAD
   /* Shadow */
 
+=======
+  margin-bottom: 32px;
+>>>>>>> 5c2a21e1815de1e1ad597b1d5d2284f13085236a
   box-shadow: 0px 4px 4px rgba(51, 51, 51, 0.04),
     0px 4px 16px rgba(194, 183, 183, 0.08);
   border-radius: 4px;
@@ -25,6 +44,7 @@
 .contenedor__imagen {
   height: 100%;
   width: 50%;
+<<<<<<< HEAD
 }
 
 .imagen__signUp {
@@ -33,3 +53,45 @@
   display: flex;
   
 }
+=======
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.imagen__signUp {
+  width: 100%;
+  display: flex;
+  flex-direction: right;
+  z-index: 0;
+}
+
+.logoDayPay {
+  margin-bottom: 64px;
+  height: 45px;
+}
+
+.imagenBetterPayments {
+  z-index: 1;
+  position: absolute;
+}
+
+.alreadyAccount {
+  font-family: Manrope;
+  font-size: 14px;
+  line-height: 16px;
+  text-align: center;
+  color: #a0a3bd;
+  margin-top: 32px;
+}
+
+.buttonOfSignUpForm {
+  display: flex;
+  justify-content: center;
+  margin-left: 10px;
+}
+
+.loginButtonUnderlined{
+  text-decoration: none;
+} 
+>>>>>>> 5c2a21e1815de1e1ad597b1d5d2284f13085236a
