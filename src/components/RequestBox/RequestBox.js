@@ -82,7 +82,7 @@ const RequestBox = ({user, token}) => {
                 <div className="Request_date">{Moment(request.date).format('DD.MM.YYYY HH:MM')}</div>
                 {request.receiver && request.receiver.author && <div className="Request_title">Sent to {request.receiver.author.name}</div>}
                 {request.sender && request.sender.author && <div className="Request_subtitle">{request.sender.author.name} requested a payment</div> }
-                <div className="Request_amount">{request.amount.toFixed(2)}<span className="request_currency">$</span></div>
+                <div className="Request_amount">{request.amount}<span className="request_currency">$</span></div>
             </div>
 
             { request.status === "pending" &&

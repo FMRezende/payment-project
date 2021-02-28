@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { Switch, Route, useRouteMatch, useHistory } from "react-router-dom";
 import jwt from "jsonwebtoken";
@@ -9,13 +8,12 @@ import Wallet from "../components/Wallet/Wallet";
 import { ReactComponent as PositiveBalance } from "../assets/PositiveBalance.svg";
 import { ReactComponent as NegativeBalance } from "../assets/NegativeBalance.svg";
 import Send from "../components/Send/Send";
-import RequestBar from '../components/RequestsBar/RequestBar';
 import Expand from "../assets/Expand.png";
 import Request from '../components/Request/Request';
 import { getBalance, weeklyIncrement } from "../components/Wallet/walletHelper";
 import AccountSettings from "../components/AccountSettings/AccountSettings";
+import RequestBar from '../components/RequestBar/RequestBar';
 
-const CENTS_CONVERTER = 100;
 
 const DashboardPage = () => {
   
@@ -37,7 +35,6 @@ const DashboardPage = () => {
 
   useEffect(() => {
 
-    console.log("hola");
     if (!token) {
       history.replace("/login");
     } else {
@@ -62,7 +59,7 @@ const DashboardPage = () => {
 
   useEffect(() => {
 
-    if (wallet !== undefined) {
+    if (wallet) {
       getBalance(setBalance, wallet);
       weeklyIncrement(setPercentage, wallet);
     }
@@ -138,7 +135,7 @@ const DashboardPage = () => {
                 {percentage > 0 ? <PositiveBalance /> : <NegativeBalance />}{" "}
                 {percentage}%
               </div>
-              <div className="balance">{`${balance / CENTS_CONVERTER}$`}</div>
+              <div className="balance">{`${balance}`}</div>
               <div className="balanceTitle">Balance</div>
             </div></div>
           )}
@@ -156,7 +153,7 @@ const DashboardPage = () => {
             <Route path={`${path}/accountsettings`} >
              {user && <AccountSettings user={user} token={token2} />}
             </Route>
-            <Route path={`${path}/`}></Route>
+            <Route exact path={`${path}/`}></Route>
           </Switch>
         </div>
         {!notDashboard && user &&(
@@ -165,7 +162,7 @@ const DashboardPage = () => {
           </div>
         )}
       </div>
-        }
+        
 
     </>
   );

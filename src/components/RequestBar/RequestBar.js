@@ -1,6 +1,6 @@
 import "./RequestBar.css";
-import RequestBox from '../RequestBox/RequestBox';
 import Avatar from '../Avatar/Avatar';
+import RequestBox from '../RequestBox/RequestBox';
 
 
 
