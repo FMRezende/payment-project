@@ -1,18 +1,11 @@
 .SignUp__container {
   align-items: center;
-<<<<<<< HEAD
-  width: 100%;
-  height: 100%;
-=======
->>>>>>> 5c2a21e1815de1e1ad597b1d5d2284f13085236a
   display: flex;
 }
 
 .signUpForm {
   display: flex;
   flex-direction: column;
-<<<<<<< HEAD
-=======
   width: 287px;
 }
 
@@ -22,25 +15,20 @@
   width: 50%;
   display: flex;
   flex-direction: column;
->>>>>>> 5c2a21e1815de1e1ad597b1d5d2284f13085236a
 }
 
 .input__container {
   background: #ffffff;
   width: 283px;
   height: 56px;
-<<<<<<< HEAD
-  /* Shadow */
-
-=======
   margin-bottom: 32px;
->>>>>>> 5c2a21e1815de1e1ad597b1d5d2284f13085236a
   box-shadow: 0px 4px 4px rgba(51, 51, 51, 0.04),
     0px 4px 16px rgba(194, 183, 183, 0.08);
   border-radius: 4px;
   border: 1px;
 }
 
+<<<<<<< HEAD
 .contenedor__imagen {
   height: 100%;
   width: 50%;
@@ -54,6 +42,13 @@
   
 }
 =======
+=======
+.contenedor__imagen_signUp {
+  max-height: 100vh;
+  width: 50vw;
+  overflow-y: hidden;
+  object-fit: cover;
+>>>>>>> e9c9c61f10cbee1d54c0ad4f11917a210efb6e49
   display: flex;
   justify-content: center;
   align-items: center;
@@ -63,7 +58,6 @@
   width: 100%;
   display: flex;
   flex-direction: right;
-  z-index: 0;
 }
 
 .logoDayPay {
@@ -94,4 +88,28 @@
 .loginButtonUnderlined{
   text-decoration: none;
 } 
+<<<<<<< HEAD
 >>>>>>> 5c2a21e1815de1e1ad597b1d5d2284f13085236a
+=======
+
+.errorInvisible {
+  display:none;
+}
+
+.errorVisible {
+  color:red;
+}
+.eyeOffSign {
+  display: flex;
+  position: absolute;
+  margin-left: 275px;
+  margin-top: 20px;
+  width: 20px;
+  cursor: pointer;
+  z-index: 2;
+}
+
+.inputPassword {
+  display: flex;
+}
+>>>>>>> e9c9c61f10cbee1d54c0ad4f11917a210efb6e49
