@@ -79,14 +79,9 @@
   margin-top: 32px;
 }
 
-.buttonOfSignUpForm {
-  display: flex;
-  justify-content: center;
-  margin-left: 10px;
-}
-
-.loginButtonUnderlined{
+.loginButtonUnderlined {
   text-decoration: none;
+<<<<<<< HEAD
 } 
 <<<<<<< HEAD
 >>>>>>> 5c2a21e1815de1e1ad597b1d5d2284f13085236a
@@ -113,3 +108,6 @@
   display: flex;
 }
 >>>>>>> e9c9c61f10cbee1d54c0ad4f11917a210efb6e49
+=======
+}
+>>>>>>> 0d08954cfbc83de68a1a990c4a0767bec39f4b07

@@ -1,36 +1,42 @@
-import { useState } from 'react';
-import { useHistory } from 'react-router-dom';
-import "./AccountSettings.css"
-import Button from '../Button/Button';
-import EditUser from '../../assets/EditUser.svg';
-import EyeOff from '../../assets/eye-off.svg';
+import { useState, useContext } from "react";
+import { useHistory } from "react-router-dom";
+import "./AccountSettings.css";
+import Button from "../Button/Button";
+import EyeOff from "../../assets/eye-off.svg";
+import { API_ROOT } from "../../hostSettings";
+import { UserContext } from "../../user-context";
+import Avatar from "../Avatar/Avatar";
 
-
-
-const AccountSettings = ({ user, token }) => {
+const AccountSettings = () => {
+  const { user, token } = useContext(UserContext);
 
   const history = useHistory();
 
   const [name, setName] = useState(user.name);
   const [surname, setSurname] = useState(user.surname);
   const [email, setEmail] = useState(user.email);
-  const [password, setPassword] = useState(user.password);
+  const [password, setPassword] = useState('');
 
   //code added to show/hide password
   const [passwordShown, setPasswordShown] = useState(false);
   const togglePasswordVisiblity = () => {
     setPasswordShown(passwordShown ? false : true);
   };
-
-
-  const body = {
-    name: name,
-    surname: surname,
-    email: email,
-    password:  password,
-  };
-
-
+  let body = {};
+  if (password === "") {
+    body = {
+      name: name,
+      surname: surname,
+      email: email,
+    };
+  } else {
+    body = {
+      name: name,
+      surname: surname,
+      email: email,
+      password: password
+    }
+  }
 
   const handleSubmit = (id) => {
     const options = {
@@ -42,65 +48,77 @@ const AccountSettings = ({ user, token }) => {
       body: JSON.stringify(body),
     };
 
-    fetch(`http://localhost:5000/api/users/${id}`, options).then((response) => {
-      console.log(response.status);
-      history.push('/dashboard');
-    }
-    );
-
+    fetch(`${API_ROOT}api/users/${id}`, options).then((response) => {
+      history.push("/dashboard");
+    });
   };
 
-
-
   return (
-    <div className="accountSettings_container">
-      <div className="boxSettings">
+    <>
+      {user && (
+        <div className="accountSettings_container">
+          <div className="boxSettings">
+            <span> Edit profile</span>
+            <form className="tradeForm">
+              <div className="accountSettings__img">
+                <Avatar user={user} />
+              </div>
+            {user &&
+            <>
+              <div className="nameData__container">
+                <input
+                  className="nameInput__container"
+                  type="text"
+                  name="name"
+                  placeholder={user.name}
+                  onChange={(e) => setName(e.target.value)}
+                />
 
-        <span> Edit profile</span>
-        <form className="tradeForm">
+                <input
+                  className="lastNameInput__container"
+                  type="text"
+                  name="surname"
+                  placeholder={user.surname}
+                  onChange={(e) => setSurname(e.target.value)}
+                />
+              </div>
 
-          <img className="accountSettings__img" src={user.avatar} alt="Avatar" />
-          <img className="accountSettings__edit" src={EditUser} alt="edit user avatar" />
-  
+              <input
+                className="input__container"
+                type="email"
+                name="email"
+                placeholder={user.email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
 
-          <div className="nameData__container">
-            <input className="nameInput__container" placeholder="Name"
-              type="text"
-              name="name"
-              onChange={(e) => setName(e.target.value)}
-            />
+              <input
+                required
+                className="input__container"
+                placeholder="Password"
+                type={passwordShown ? "text" : "password"}
+                name="password"
+                onChange={(e) => setPassword(e.target.value)}
+              />
+              </>
+            }
+              <img
+                className="eyeOff"
+                src={EyeOff}
+                alt="eye off"
+                onClick={togglePasswordVisiblity}
+              />
 
-            <input className="lastNameInput__container" placeholder="Last Name"
-              type="text"
-              name="surname"
-              onChange={(e) => setSurname(e.target.value)}
-            />     
+              <Button
+                buttonClass="defaultButton_featured"
+                value="Save"
+                onClick={() => handleSubmit(user._id)}
+              />
+            </form>
           </div>
-
-
-
-            <input className="input__container" placeholder="Email"
-            type="email"
-            name="email"
-            onChange={(e) => setEmail(e.target.value)}
-          /> 
-
-            <input required className="input__container" placeholder="Password"
-            type={passwordShown ? "text" : "password"}
-            name="password"
-            onChange={(e) => setPassword(e.target.value)}
-          /> 
-          <img className="eyeOff" src={EyeOff} alt="eye off" onClick={togglePasswordVisiblity} />
-
-
-          <Button
-            buttonClass="defaultButton_featured"
-            value="Save"
-            onClick={() => handleSubmit(user._id)} />
-        </form>
-      </div>
-    </div>
-  )
-}
+        </div>
+      )}
+    </>
+  );
+};
 
 export default AccountSettings;
